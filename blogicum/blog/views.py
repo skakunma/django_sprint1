@@ -55,10 +55,10 @@ def index(request):
 def post_detail(request, id):
     template = 'blog/detail.html'
     if any(post['id'] == id for post in posts):
-    	context = {'post': posts[id]}
-    	return render(request, template, context)
+        context = {'post': posts[id]}
+        return render(request, template, context)
     else:
-    	return HttpResponse("Такого id не существует")
+        return HttpResponse("Такого id не существует")
 
 
 def category_posts(request, category_slug):
