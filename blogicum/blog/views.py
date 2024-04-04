@@ -1,5 +1,5 @@
 from django.shortcuts import render
-# Create your views here.
+from django.http import HttpResponse
 
 
 posts = [
@@ -54,8 +54,11 @@ def index(request):
 
 def post_detail(request, id):
     template = 'blog/detail.html'
-    context = {'post': posts[id]}
-    return render(request, template, context)
+    if any(post['id'] == id for post in posts):
+    	context = {'post': posts[id]}
+    	return render(request, template, context)
+    else:
+    	return HttpResponse("Такого id не существует")
 
 
 def category_posts(request, category_slug):

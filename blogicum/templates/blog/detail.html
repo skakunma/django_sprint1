@@ -1,19 +1,7 @@
-<!DOCTYPE html> 
-<html lang="ru"> 
-  <head>
-    {% load static %}    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="{% static 'img/fav/favicon.ico' %}" type="image">
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/fav/apple-touch-icon.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/fav/favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/fav/favicon-16x16.png' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <!-- Формируется из локации и даты -->
-    <title>Остров отчаянья. 25 октября 1659 года</title>
-  </head>
-  <body>	   
-    <header>
+{% extends "base.html" %}
+{% load static %}  
+{% block title %}{{post.location}}. {{post.date}}{% endblock %}     
+{% block header %}
       <nav class="navbar navbar-light" style="background-color: lightskyblue">
         <div class="container">
           <a class="navbar-brand" href="{% url 'blog:index' %}">
@@ -39,8 +27,8 @@
           </ul>      
         </div>
       </nav> 
-    </header>
-    <main>
+{% endblock %}
+{% block content %}
       <div class="container py-5">
         <article>
           <ul>
@@ -59,9 +47,6 @@
           </p>          
         </article>                
       </div>
-    </main>
-    <footer class="border-top text-center py-3">
-      <p>© Блогикум</p>    
-    </footer>
-  </body>
-</html>
+{% endblock %}
+{% block footer %}
+{% endblock %}
